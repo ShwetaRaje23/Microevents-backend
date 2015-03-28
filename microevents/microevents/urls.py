@@ -1,10 +1,14 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from manager import UserManager
+from manager import LoginManager
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'microevents.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-)
+                       url(r'^api/login/$', LoginManager.loginRequest),
+                       url(r'^api/logout/$', LoginManager.logUserOut),
+                       url(r'^api/testlogin/$', LoginManager.getCurrentUserJson),
+                       url(r'^api/csrf/$', LoginManager.tokenRequest),
+                       url(r'^api/user/$', UserManager.userRequest),
+                       url(r'^api/user/(?P<user_id>\d*)/$', UserManager.userRequest),
+                       url(r'^api/user/((?P<user_id>\d+)/)?edit/$', UserManager.editUserRequest)
+                    )
