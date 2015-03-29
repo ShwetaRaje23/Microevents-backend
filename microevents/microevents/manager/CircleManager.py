@@ -19,6 +19,7 @@ def createCircle(request):
         circle =  meCircle()
         circle.circle_name = circleName
         circle.group_users = user_id
+        circle.circle_owner=owner
         circle.save()
 
 def getCircle(request,circle_id):
@@ -39,10 +40,10 @@ def getCircle(request,circle_id):
 def deleteCircle(request, circle_id):
     response_data = {"success":False}
     if circle_id:
-        mecircles = meCircle.objects.filter(id=circle_id)
+        mecircle = meCircles.objects.filter(id=circle_id)
         #Ideally there shouldn't be duplicate circles
-        if len(ticircles)>0:
-            circle = mecircles[0]
+        if len(mecircle)>0:
+            circle = mecircle[0]
             # if circle.circleUsers.count()>1:
             #     #1 because "this" user is attempting to delete it
             #     response_data["reason"] = "This circle has other users. You cannot delete it"

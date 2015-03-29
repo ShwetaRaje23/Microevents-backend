@@ -17,19 +17,19 @@ def createEvent(request):
     eventOwner = request.POST.get('user_id','')
     eventVenue = request.POST.get('venue','')
     
-    event = meEvent()
+    event = meEvents()
     event.name = eventName
     event.date_time = eventDateTime
     event.owner = eventOwner
     event.venue = eventVenue
 
     event.save()
-    response_data = chore.getResponseData()
+    response_data = event.getResponseData()
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 def deleteEvent(request,event_id):
-    event = meEvent.objects.get(id=event_id)
+    event = meEvents.objects.get(id=event_id)
     event.delete()
     return HttpResponse(json.dumps({'success': True}), content_type="application/json")
 
@@ -41,7 +41,7 @@ def getEvent(request,event_id):
 
         #Ideally there shouldn't be duplicate users.
         if len(meEvent)>0:
-            event = tievent[0]
+            event = meEvent[0]
             response_data = event.getResponseData()
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
