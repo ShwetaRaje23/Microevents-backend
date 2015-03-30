@@ -24,7 +24,9 @@ def createEvent(request):
         event.venue = eventVenue
         event.save()
         eid = event.id
-        createManager(invitedCircles,eid)
+        if createManager(invitedCircles,eid)==False:
+                return HttpResponse(json.dumps({'success': False}), content_type="application/json")
+        
         response_data = event.getResponseData()
         return HttpResponse(json.dumps(response_data), content_type="application/json")
 
@@ -33,6 +35,9 @@ def createManager(invitedCircles,eid):
         
         for circle_id in invitedCircles:
                 circle = meCircles.objects.filter(id=circle_id)
+                if circle is None:
+                        print "circle not existant"
+                        return False
                 data_cir = circle.getResponseData()
                 for user in data_cir["users"]:
                         manager = meManager()
