@@ -65,7 +65,7 @@ class meEvents(models.Model):
     venue = models.CharField(max_length=30)
     date_time = models.DateTimeField(blank=True,null = True)
     owner = models.ForeignKey('meUser')
-    name = models.CharField(max_length=30)
+    event_name = models.CharField(max_length=30,default="hue hue hue")
     
     def getResponseData(self):
         response_data = {}
@@ -73,7 +73,7 @@ class meEvents(models.Model):
         response_data['venue'] = self.venue
         response_data['date_time'] = self.date_time
         response_data['owner'] = self.owner
-        response_data['name'] = self.name
+        response_data['event_name'] = self.event_name
 
         return response_data
         
