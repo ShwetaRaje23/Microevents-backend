@@ -41,6 +41,6 @@ def getEvents(request):
     for event in all_events_for_user:
         eid = event.getResponseData()['event_id']
         
-        event_row=meEvent.objects.filter(id-eid)
+        event_row=meEvent.objects.filter(id=eid)
         response.append(event_row.getResponseData)
    return HttpResponse(json.dumps(response_data), content_type="application/json")     
