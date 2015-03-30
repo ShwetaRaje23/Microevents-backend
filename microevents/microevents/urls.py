@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
+#from django.contrib import admin
 from manager import UserManager
 from manager import LoginManager
 from manager import EventManager
@@ -15,4 +15,4 @@ urlpatterns = patterns('',
                        url(r'^api/event/$', EventManager.userRequest),
                        url(r'^api/user/(?P<user_id>\d*)/$', UserManager.userRequest),
                        url(r'^api/user/((?P<user_id>\d+)/)?edit/$', UserManager.editUserRequest)
-                    )
+)
