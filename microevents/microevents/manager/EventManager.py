@@ -16,16 +16,31 @@ def createEvent(request):
     eventDateTime = request.POST.get('event_date_time','')
     eventOwner = request.POST.get('user_id','')
     eventVenue = request.POST.get('venue','')
-    
+    invitedCircles = request.POST.get('invites','')
     event = meEvents()
     event.name = eventName
     event.date_time = eventDateTime
     event.owner = eventOwner
     event.venue = eventVenue
-
     event.save()
+    eid = event.id
+    createManager(invitedCircles,eid)
     response_data = event.getResponseData()
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+def createManager(invitedCircles,eid):
+        
+        for circle_id in invitedCircles:
+                circle = meCircles.objects.filter(id=circle_id)
+                data_cir = circle.getResponseData()
+                for user in data_cir["users"]:
+                        manager = meManager()
+                        manager.event_id = eid
+                        manager.user_id = user # should be a user
+                        manager.accpet = False
+                        manager.circle_id = circle_id
+                        manager.save()
 
 
 def deleteEvent(request,event_id):

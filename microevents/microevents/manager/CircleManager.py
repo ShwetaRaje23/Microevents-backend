@@ -32,7 +32,7 @@ def getCircle(request,circle_id):
             circle = meCircle[0]
             print "feaegearewr"
             
-            response_data = group.getResponseData(request)
+            response_data = meCircle.getResponseData(request)
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 

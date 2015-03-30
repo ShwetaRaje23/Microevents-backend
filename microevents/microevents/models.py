@@ -20,12 +20,15 @@ class meUser(models.Model):
         response_data["user_id"] = self.id
 
         return response_data
+    
+    def getUserId(self):
+        return self.id
 
 class meCircles(models.Model):
-    circle_id = models.IntegerField(default=0)
+    #circle_id = models.IntegerField(default=0)
     circle_name = models.CharField(max_length=30)
     group_users = models.ManyToManyField('meUser')
-    circle_owner = models.ForeignKey('meUser')
+    circle_owner = models.ForeignKey('meUser',related_name='circle_owner')
     
     def __unicode__(self):
         return self.circle_name
@@ -35,8 +38,7 @@ class meCircles(models.Model):
         if request:
             user_id = request.session['user_id']
 
-        
-        users=[]
+        users=[] #No idea what this is doing
         for i,user in enumerate(self.group_users.all()):
             if user.id == user_id and i !=0:
                 temp = users[0]
@@ -46,9 +48,10 @@ class meCircles(models.Model):
         response_data={}
         response_data["circle_name"]=self.circle_name
         response_data["users"]=users
+        return response_data
         
 class meMananger(models.Model):
-    event_id = models.IntegerField(default=0)
+    event_id = models.ForeignKey('meEvents')
     circle_id = models.IntegerField(default=0)
     user_id = models.IntegerField(default=0)
     accept = models.BooleanField(default=False)
@@ -58,8 +61,20 @@ class meMananger(models.Model):
 
     
 class meEvents(models.Model):
-    event_id = models.IntegerField(default=0)
+    #event_id = models.IntegerField(default=0)
     venue = models.CharField(max_length=30)
     date_time = models.DateTimeField(blank=True,null = True)
     owner = models.ForeignKey('meUser')
+    name = models.CharField(max_length=30)
     
+    def getResponseData(self):
+        response_data = {}
+        response_data['event_id'] = self.id
+        response_data['venue'] = self.venue
+        response_data['date_time'] = self.date_time
+        response_data['owner'] = self.owner
+        response_data['name'] = self.name
+
+        return response_data
+        
+        
