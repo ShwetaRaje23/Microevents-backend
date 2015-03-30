@@ -66,7 +66,8 @@ def createUser(request):
     user.last_name = last_name
     user.email = email
     user.save()
-
+    response_data = user.getResponseData()
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def getUser(request, user_id):
     response_data = {}

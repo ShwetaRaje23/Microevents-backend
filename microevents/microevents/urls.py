@@ -21,5 +21,5 @@ urlpatterns = patterns('',
 
                        url(r'^api/circle/$', CircleManager.circleRequest),
                        url(r'^api/circle/(?P<circle_id>\d*)/$', CircleManager.circleRequest)
-                    )
+)
 

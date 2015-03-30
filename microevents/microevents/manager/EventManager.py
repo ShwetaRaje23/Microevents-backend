@@ -51,13 +51,14 @@ def deleteEvent(request,event_id):
 def getEvent(request,event_id):
         response_data = {}
 
-    if event_id:
-            meEvent = meEvents.objects.filter(id=event_id)
-
-        #Ideally there shouldn't be duplicate users.
+        if event_id:
+                meEvent = meEvents.objects.filter(id=event_id)
+        
+                #Ideally there shouldn't be duplicate users.
         if len(meEvent)>0:
                 event = meEvent[0]
-                response_data = event.getResponseData()
-
-    return HttpResponse(json.dumps(response_data), content_type="application/json")
-
+        
+        response_data = event.getResponseData()
+                
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
+                
