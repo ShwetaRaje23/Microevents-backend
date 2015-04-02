@@ -1,6 +1,6 @@
 import json
 from django.http import HttpResponse
-from ..models import meEvents,meUser,meCircles
+from ..models import meEvents,meUser,meCircles,meManager
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def eventRequest(request, event_id=None):
@@ -20,6 +20,7 @@ def createEvent(request):
         owner_id = request.POST.get('user_id','')
         eventVenue = request.POST.get('venue','')
         invitedCircles = request.POST.get('invites','')
+        invitedCircles = invitedCircles.split(',')
         event = meEvents()
         event.event_name = eventName
         event.date_time = eventDateTime
@@ -50,11 +51,17 @@ def createManager(invitedCircles,eid):
                 if len(circle) is 0:
                         print "circle not existant"
                         return False
+                circle = circle[0]
+                print circle_id
                 data_cir = circle.getResponseData()
                 for user in data_cir["users"]:
                         manager = meManager()
-                        manager.event_id = eid
-                        manager.user_id = user # should be a user
+                        event = meEvents.objects.filter(id=eid)
+                        if(len(event) is 0):
+                                print "event not existant,shouldnt happen"
+                                return false
+                        manager.event = event[0]
+                        manager.user_id = user['user_id'] # should be a user
                         manager.accpet = False
                         manager.circle_id = circle_id
                         manager.save()

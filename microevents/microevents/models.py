@@ -52,13 +52,13 @@ class meCircles(models.Model):
         return response_data
         
 class meManager(models.Model):
-    event_id = models.ForeignKey('meEvents')
+    event = models.ForeignKey('meEvents')
     circle_id = models.IntegerField(default=0)
     user_id = models.IntegerField(default=0)
     accept = models.BooleanField(default=False)
     
     def __unicode__(self):
-        return u"EventID:%d circleID:%d" %(self.event_id,self.circle_id)
+        return u"EventID:%d circleID:%d" %(self.event.id,self.circle_id)
 
     
 class meEvents(models.Model):
