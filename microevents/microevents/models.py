@@ -40,17 +40,18 @@ class meCircles(models.Model):
 
         users=[] #No idea what this is doing
         for i,user in enumerate(self.group_users.all()):
-            if user.id == user_id and i !=0:
-                temp = users[0]
-                users[0] = user.getResponseData()
-                users.append(temp)
+            # if user.id == user_id and i !=0:
+            # temp = users[0]
+            # users[0] = user.getResponseData()
+            users.append(user.getResponseData())
         
         response_data={}
         response_data["circle_name"]=self.circle_name
         response_data["users"]=users
+        response_data["owner"]=self.circle_owner.getResponseData()
         return response_data
         
-class meMananger(models.Model):
+class meManager(models.Model):
     event_id = models.ForeignKey('meEvents')
     circle_id = models.IntegerField(default=0)
     user_id = models.IntegerField(default=0)
@@ -63,7 +64,7 @@ class meMananger(models.Model):
 class meEvents(models.Model):
     #event_id = models.IntegerField(default=0)
     venue = models.CharField(max_length=30)
-    date_time = models.DateTimeField(blank=True,null = True)
+    date_time = models.DateTimeField(blank=True,null = True) #format YYYY-MM-DD HH:MM
     owner = models.ForeignKey('meUser')
     event_name = models.CharField(max_length=30,default="hue hue hue")
     
@@ -72,7 +73,7 @@ class meEvents(models.Model):
         response_data['event_id'] = self.id
         response_data['venue'] = self.venue
         response_data['date_time'] = self.date_time
-        response_data['owner'] = self.owner
+        response_data['owner_id'] = self.owner.id
         response_data['event_name'] = self.event_name
 
         return response_data

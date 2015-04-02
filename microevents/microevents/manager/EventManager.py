@@ -1,5 +1,8 @@
-from ..models import meEvents
-
+import json
+from django.http import HttpResponse
+from ..models import meEvents,meUser,meCircles
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def eventRequest(request, event_id=None):
         if (event_id is None):
                 event_id = request.GET.get('event_id', '')
@@ -14,12 +17,13 @@ def eventRequest(request, event_id=None):
 def createEvent(request):
         eventName = request.POST.get('event_name','')
         eventDateTime = request.POST.get('event_date_time','')
-        eventOwner = request.POST.get('user_id','')
+        owner_id = request.POST.get('user_id','')
         eventVenue = request.POST.get('venue','')
         invitedCircles = request.POST.get('invites','')
         event = meEvents()
         event.event_name = eventName
         event.date_time = eventDateTime
+        eventOwner = meUser.objects.get(id=owner_id)
         event.owner = eventOwner
         event.venue = eventVenue
         event.save()
@@ -32,10 +36,18 @@ def createEvent(request):
 
 
 def createManager(invitedCircles,eid):
-        
+        print "reaching here",invitedCircles
         for circle_id in invitedCircles:
-                circle = meCircles.objects.filter(id=circle_id)
-                if circle is None:
+                print "reaching here wer ",circle_id
+                try:
+                        print "tsete"
+                        circle = meCircles.objects.filter(id=circle_id)
+                except:
+                        return False
+                
+                print circle
+
+                if len(circle) is 0:
                         print "circle not existant"
                         return False
                 data_cir = circle.getResponseData()
