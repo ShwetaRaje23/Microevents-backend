@@ -9,58 +9,50 @@ REST API Documentation
     Please note that all urls should have a trailing slash ( / ). Some requests will work without it, but others won't. 
 
 Logging In/Out 
-    Logs the user into the app with email. 
+======
+
+Login    
+```
     POST /api/login/ 
     Sample request: 
     { 
         email: "rahul@goel.com" 
     } 
-
+```
+Logout
+```
     POST /api/logout/  
-
-    Logs out the current user. 
-
+    
     No params required 
+```
 
 Users 
+======
 
+Get User
+If user_id is omitted, it uses the user_id of the current user (if logged in) 
+```
     GET /api/user/<user_id>/ 
-
-    Returns the user with <user_id>.  
-
-    If user_id is omitted, it uses the user_id of the current user (if logged in) 
-
     Sample response: 
+    { 
 
-{ 
-
-   first_name: "Rahul", 
-
-     last_name: "Goel", 
-
-   email: "rahul@goel.com", 
-
-     user_id: 1, 
-
-} 
-
+        first_name: "Rahul", 
+        last_name: "Goel", 
+        email: "rahul@goel.com", 
+        user_id: 1, 
+    } 
+```
+Create User
+If a user with that email address already exists, { success: false } is returned. 
+```
     POST /api/user/ 
-
-    Creates a user and returns it. 
-
-    If a user with that email address already exists, { success: false } is returned. 
-
     Sample request: 
-
-{ 
-
-    first_name: "John", 
-
-    last_name: "Smith", 
-
-    email: "johnsmith@gmail.com" 
-
-} 
+    { 
+        first_name: "John", 
+        last_name: "Smith", 
+        email: "johnsmith@gmail.com" 
+    } 
+```
 
     POST /api/user/<user_id>/edit/ 
 
