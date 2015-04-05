@@ -1,5 +1,7 @@
 from ..models import meManager
-
+from ..models import meEvents
+import json
+from django.http import HttpResponse
 
 def manageRequest(request, event_id=None):
     # 2 cases, either accept or reject a event
@@ -16,7 +18,7 @@ def manageRequest(request, event_id=None):
     else:
         if (event_id is None):
             event_id = request.GET.get('event_id', '')
-        return getEvent(request, event_id)
+        return getEvents(request, event_id)
 
     
 
@@ -36,11 +38,10 @@ def acceptEvent(request):
 def getEvents(request):
     user = request.POST.get('user_id','')
     
-    all_events_for_user = meManger.objects.filter(user_id=user,accept=True)
+    all_events_for_user = meManager.objects.filter(user_id=user,accept=True)
     response=[]
     for event in all_events_for_user:
         eid = event.getResponseData()['event_id']
-        
-        event_row=meEvent.objects.filter(id=eid)
+        event_row=meEvents.objects.filter(id=eid)
         response.append(event_row.getResponseData)
-   return HttpResponse(json.dumps(response_data), content_type="application/json")     
+    return HttpResponse(json.dumps(response), content_type="application/json")
