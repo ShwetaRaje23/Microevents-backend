@@ -9,18 +9,12 @@ REST API Documentation
     Please note that all urls should have a trailing slash ( / ). Some requests will work without it, but others won't. 
 
 Logging In/Out 
-
-    POST /api/login/ 
-
     Logs the user into the app with email. 
-
+    POST /api/login/ 
     Sample request: 
-
-{ 
-
-    email: "rahul@goel.com" 
-
-} 
+    { 
+        email: "rahul@goel.com" 
+    } 
 
     POST /api/logout/  
 
