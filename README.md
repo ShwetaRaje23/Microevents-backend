@@ -197,9 +197,14 @@ Circles
  
 
  
+Get all events for user
 
+    
+        POST /api/main/
  
-
+{
+    user_id="2"
+}
  
 
  
