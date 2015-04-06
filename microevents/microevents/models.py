@@ -77,7 +77,7 @@ class meEvents(models.Model):
         response_data['date_time'] = now.strftime(desired_format)
         response_data['owner_id'] = self.owner.id
         response_data['event_name'] = self.event_name
-
+        response_data['owner_name'] = self.owner.first_name +" "+self.owner.last_name
         return response_data
         
         
