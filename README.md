@@ -35,11 +35,14 @@ If user_id is omitted, it uses the user_id of the current user (if logged in)
     GET /api/user/<user_id>/ 
     Sample response: 
     { 
-
+        users{
         first_name: "Rahul", 
         last_name: "Goel", 
         email: "rahul@goel.com", 
-        user_id: 1, 
+        user_id: 1,
+        },
+        events{}
+        
     } 
 ```
 Create User
@@ -63,6 +66,14 @@ Edit the properties of a user. user_id is optional. Only first_name, last_name, 
     //here, last_name will remain the same 
 } 
 
+```
+Get all events for user
+```
+   POST /api/main/
+ 
+{
+    user_id="2"
+}
 ```
 
 Events 
@@ -133,13 +144,5 @@ Creates a circle.
 Deletes a circle item. 
 ```
     DELETE /api/ circle/<circle_id>/ 
-```
-Get all events for user
-```
-   POST /api/main/
- 
-{
-    user_id="2"
-}
 ```
  
