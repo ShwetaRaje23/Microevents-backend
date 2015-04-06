@@ -4,7 +4,7 @@ from manager import UserManager
 from manager import LoginManager
 from manager import EventManager
 from manager import CircleManager
-
+from manager import MainManager
 urlpatterns = patterns('',
                        url(r'^api/login/$', LoginManager.loginRequest),
                        url(r'^api/logout/$', LoginManager.logUserOut),
@@ -15,9 +15,10 @@ urlpatterns = patterns('',
                        url(r'^api/user/(?P<user_id>\d*)/$', UserManager.userRequest),
                        url(r'^api/user/((?P<user_id>\d+)/)?edit/$', UserManager.editUserRequest),
 
-
                        url(r'^api/event/$', EventManager.eventRequest),
                        url(r'^api/event/(?P<event_id>\d*)/$', EventManager.eventRequest),
+
+                       url(r'^api/main/$', MainManager.manageRequest),
 
                        url(r'^api/circle/$', CircleManager.circleRequest),
                        url(r'^api/circle/(?P<circle_id>\d*)/$', CircleManager.circleRequest)

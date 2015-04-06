@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime, timedelta
-
+import time
 
 class meUser(models.Model):
     first_name = models.CharField(max_length=30)
@@ -55,7 +55,7 @@ class meManager(models.Model):
     event = models.ForeignKey('meEvents')
     circle_id = models.IntegerField(default=0)
     user_id = models.IntegerField(default=0)
-    accept = models.BooleanField(default=False)
+    accept = models.IntegerField(default=0)
     
     def __unicode__(self):
         return u"EventID:%d circleID:%d" %(self.event.id,self.circle_id)
@@ -72,7 +72,9 @@ class meEvents(models.Model):
         response_data = {}
         response_data['event_id'] = self.id
         response_data['venue'] = self.venue
-        response_data['date_time'] = self.date_time
+        now = self.date_time.now()
+        desired_format = '%Y-%m-%dT%H-%M'
+        response_data['date_time'] = now.strftime(desired_format)
         response_data['owner_id'] = self.owner.id
         response_data['event_name'] = self.event_name
 

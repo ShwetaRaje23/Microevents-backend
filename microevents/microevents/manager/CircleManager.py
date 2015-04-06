@@ -49,9 +49,21 @@ def getCircle(request,circle_id):
             print "feaegearewr"
             
             response_data = meCircle.getResponseData(request)
-
+    else:
+        getCirclesForUser(request)
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+def getCirclesForUser(request):
+    response_data ={}
+    user_id=request.GET.get('user_id','')
+    user = meUser.objects.filter(id=user_id)
+    user = user[0]
+    if(user_id):
+        circles_for_user= meCircles.objects.filter(circle_owner=user)
+    for circle,i in enumerate(circles_for_user):
+        response_data[i] = cirle.getResponseData()
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
         
 def deleteCircle(request, circle_id):
     response_data = {"success":False}

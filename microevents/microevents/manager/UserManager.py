@@ -1,6 +1,6 @@
 import json
 from django.http import HttpResponse
-from ..models import meUser
+from ..models import meUser,meEvents,meCircles,meManager
 from django.views.decorators.csrf import csrf_exempt
 from LoginManager import getCurrentUser
 from datetime import datetime, timedelta
@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 @csrf_exempt
 def userRequest(request, user_id=None):
     if (user_id is None):
+        user_id = request.GET.get('user_id')
         user = getCurrentUser(request)
         if user:
             user_id = user.id
@@ -71,12 +72,20 @@ def createUser(request):
 
 def getUser(request, user_id):
     response_data = {}
+    # print "tesrt",user_id
     if user_id:
         meusers = meUser.objects.filter(id=user_id)
         #Ideally there shouldn't be duplicate users.
+        # print "gesr"
         if len(meusers)>0:
             user = meusers[0]
-            response_data = user.getResponseData()
+            events_with_user_is_owner=meEvents.objects.filter(owner=user)
+            events_dict={}
+            for events in events_with_user_is_owner:
+                res=events.getResponseData()
+                events_dict.append(res)
+            response_data['user'] = user.getResponseData()
+            response_data['events'] = events_dict
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
