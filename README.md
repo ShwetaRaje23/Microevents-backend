@@ -53,14 +53,9 @@ If a user with that email address already exists, { success: false } is returned
         email: "johnsmith@gmail.com" 
     } 
 ```
-
+Edit the properties of a user. user_id is optional. Only first_name, last_name, email are editable. 
+```    
     POST /api/user/<user_id>/edit/ 
-
-    Edit the properties of a user. 
-
-    user_id is optional. 
-
-    Only first_name, last_name, email are editable. 
 
     Sample request: 
 
@@ -74,13 +69,12 @@ If a user with that email address already exists, { success: false } is returned
 
 } 
 
- 
+```
 
 Events 
-
+Returns the event with <event_id>. 
+```
     GET /api/event/<event_id>/  
-
-    Returns the event with <event_id>. 
 
     Sample response: 
 
@@ -90,13 +84,15 @@ Events
 
     venue: "Atlanta", 
 
-  date_time:”2012-11-23 11:11:00” 
+    date_time:”2012-11-23 11:11:00” 
 
-  owner_id:1 
+    owner_id:1 
 
-  event_name:”event1” 
+    event_name:”event1” 
 
 } 
+
+```
 
     POST /api/event/  
 
