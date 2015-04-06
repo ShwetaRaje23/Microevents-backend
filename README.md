@@ -66,6 +66,7 @@ Edit the properties of a user. user_id is optional. Only first_name, last_name, 
 ```
 
 Events 
+======
 Returns the event with <event_id>. 
 ```
     GET /api/event/<event_id>/  
@@ -108,6 +109,7 @@ Deletes an event if event exists
     DELETE /api/ event/<event_id>/ 
 ```
 Circles
+======
 Returns the circle with the circle id. 
 ```
     GET /api/circle/<circle_id>/ 
