@@ -145,4 +145,8 @@ Deletes a circle item.
 ```
     DELETE /api/ circle/<circle_id>/ 
 ```
+ Get all circels for user
  
+```
+    GET /api/ circle/?user_id=1 
+```
