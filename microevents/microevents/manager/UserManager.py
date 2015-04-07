@@ -52,7 +52,7 @@ def createUser(request):
     email = request.POST.get('email','')
     user = None
     existing_users = meUser.objects.filter(email=email)
-
+    
     if len(existing_users) > 0:
         existing_user = existing_users[0]
         if existing_user.first_name == "Unverified" and existing_user.last_name == "Unverified": #hardcoded new user
@@ -81,9 +81,9 @@ def getUser(request, user_id):
             user = meusers[0]
             events_with_user_is_owner=meEvents.objects.filter(owner=user)
             events_dict={}
-            for events in events_with_user_is_owner:
+            for events,i in enumerate(events_with_user_is_owner):
                 res=events.getResponseData()
-                events_dict.append(res)
+                events_dict[i]=res
             response_data['user'] = user.getResponseData()
             response_data['events'] = events_dict
 
