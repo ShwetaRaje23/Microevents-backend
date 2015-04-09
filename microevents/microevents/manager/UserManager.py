@@ -79,13 +79,14 @@ def getUser(request, user_id):
         # print "gesr"
         if len(meusers)>0:
             user = meusers[0]
-            events_with_user_is_owner=meEvents.objects.filter(owner=user)
-            events_dict={}
-            for i,events in enumerate(events_with_user_is_owner):
-                res=events.getResponseData()
-                events_dict[i]=res
-            response_data['user'] = user.getResponseData()
-            response_data['events'] = events_dict
+            response_data = user.getResponseData()
+
+
+            #for i,events in enumerate(events_with_user_is_owner):
+            #   res=events.getResponseData()
+            #   events_dict[i]=res
+
+            # response_data['events'] = events_dict
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 

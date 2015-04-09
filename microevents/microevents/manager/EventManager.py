@@ -85,4 +85,15 @@ def getEvent(request,event_id):
         response_data = event.getResponseData()
                 
         return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def getEventOfOwner(request,user_id):
+    response_data={}
+    if user_id:
+        meEventOwner = meEvents.objects.filter(owner=user_id)
+
+    if len(meEventOwner)>0:
+        event = meEventOwner[0]
+
+    response_data = event.getResponseData()
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
                 
