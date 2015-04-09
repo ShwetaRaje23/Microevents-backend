@@ -92,8 +92,13 @@ def getEventOfOwner(request,user_id):
         meEventOwner = meEvents.objects.filter(owner=user_id)
 
     if len(meEventOwner)>0:
-        event = meEventOwner[0]
+        for eachEvent in meEventOwner:
+            event = eachEvent.getResponseData()
+            response_data.append(event)
 
-    response_data = event.getResponseData()
+    else:
+        return HttpResponse(json.dumps({'success':False}), content_type="application/json")
+
+
     return HttpResponse(json.dumps(response_data), content_type="application/json")
                 

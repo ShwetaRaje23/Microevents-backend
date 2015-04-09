@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8a3e982-4fb2-41d2-874f-a6e34415e4b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microevents/microevents/urls.py" afterPath="$PROJECT_DIR$/microevents/microevents/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microevents/microevents/manager/EventManager.py" afterPath="$PROJECT_DIR$/microevents/microevents/manager/EventManager.py" />
     </list>
     <ignored path="Microevents-Backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microevents/microevents/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="589">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
               <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding />
             </state>
@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventManager.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EventManager.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/microevents/microevents/manager/EventManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1196" max-vertical-offset="1785">
-              <caret line="88" column="19" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.79796267" vertical-offset="1281" max-vertical-offset="1870">
+              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -113,8 +113,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/microevents/microevents/manager/UserManager.py" />
-        <option value="$PROJECT_DIR$/microevents/microevents/manager/EventManager.py" />
         <option value="$PROJECT_DIR$/microevents/microevents/urls.py" />
+        <option value="$PROJECT_DIR$/microevents/microevents/manager/EventManager.py" />
       </list>
     </option>
   </component>
@@ -369,14 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microevents/microevents/manager/UserManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1006" max-vertical-offset="1598">
-          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microevents/microevents/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="856" max-vertical-offset="1513">
@@ -387,21 +379,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microevents/microevents/manager/EventManager.py">
+    <entry file="file://$PROJECT_DIR$/microevents/microevents/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
-          <caret line="88" column="19" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microevents/microevents/urls.py">
+    <entry file="file://$PROJECT_DIR$/microevents/microevents/manager/UserManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="589">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1006" max-vertical-offset="1598">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microevents/microevents/manager/EventManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79796267" vertical-offset="1281" max-vertical-offset="1870">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
