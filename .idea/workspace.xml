@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8a3e982-4fb2-41d2-874f-a6e34415e4b7" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\divyavijayaraghav889\Documents\Microevents-Backend\Procfile.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microevents/microevents/manager/EventManager.py" afterPath="$PROJECT_DIR$/microevents/microevents/manager/EventManager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microevents/microevents/manager/UserManager.py" afterPath="$PROJECT_DIR$/microevents/microevents/manager/UserManager.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microevents/microevents/urls.py" afterPath="$PROJECT_DIR$/microevents/microevents/urls.py" />
     </list>
     <ignored path="Microevents-Backend.iws" />
@@ -33,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/microevents/microevents/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="589">
-              <caret line="19" column="99" selection-start-line="19" selection-start-column="99" selection-end-line="19" selection-end-column="99" />
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -403,7 +400,7 @@
     <entry file="file://$PROJECT_DIR$/microevents/microevents/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="589">
-          <caret line="19" column="99" selection-start-line="19" selection-start-column="99" selection-end-line="19" selection-end-column="99" />
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding />
         </state>
       </provider>

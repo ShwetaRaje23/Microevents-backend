@@ -17,7 +17,7 @@ urlpatterns = patterns('',
 
                        url(r'^api/event/$', EventManager.eventRequest),
                        url(r'^api/event/(?P<event_id>\d*)/$', EventManager.eventRequest),
-                       url(r'^api/event/((?P<user_id>\d+)/)?events/$', EventManager.getEventOfOwner),
+                       url(r'^api/user/((?P<user_id>\d+)/)?events/$', EventManager.getEventOfOwner),
 
                        url(r'^api/main/$', MainManager.manageRequest),
 
