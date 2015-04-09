@@ -72,7 +72,7 @@ def createUser(request):
 
 def getUser(request, user_id):
     response_data = {}
-    # print "tesrt",user_id
+    print "tesrt",user_id
     if user_id:
         meusers = meUser.objects.filter(id=user_id)
         #Ideally there shouldn't be duplicate users.
@@ -81,7 +81,7 @@ def getUser(request, user_id):
             user = meusers[0]
             events_with_user_is_owner=meEvents.objects.filter(owner=user)
             events_dict={}
-            for events,i in enumerate(events_with_user_is_owner):
+            for i,events in enumerate(events_with_user_is_owner):
                 res=events.getResponseData()
                 events_dict[i]=res
             response_data['user'] = user.getResponseData()
