@@ -30,7 +30,7 @@ Users
 ======
 
 Get User
-If user_id is omitted, it uses the user_id of the current user (if logged in) 
+If user_id is omitted, it uses the user_id of the current user (if logged in)  also returns all the events that user has created
 ```
     GET /api/user/<user_id>/ 
     Sample response: 
