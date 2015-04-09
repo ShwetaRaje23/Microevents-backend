@@ -1,4 +1,4 @@
-Django==1.5
+Django==1.7
 MySQL-python==1.2.4
 cffi==0.9.2
 cryptography==0.8.1
@@ -19,8 +19,6 @@ python-dateutil==2.2
 python-docx==0.8.5
 python-magic==0.4.6
 requests==2.6.0
-s3cmd==1.5.2
-scikit-learn==0.15.2
 simplejson==3.6.4
 six==1.8.0
 tweepy==1.4
