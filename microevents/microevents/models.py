@@ -34,9 +34,9 @@ class meCircles(models.Model):
         return self.circle_name
     
     def getResponseData(self, request=None):
-        user_id = None
-        if request:
-            user_id = request.session['user_id']
+        # user_id = None
+        # if request:
+            # user_id = request.session['user_id']
 
         users=[] #No idea what this is doing
         for i,user in enumerate(self.group_users.all()):
@@ -49,6 +49,7 @@ class meCircles(models.Model):
         response_data["circle_name"]=self.circle_name
         response_data["users"]=users
         response_data["owner"]=self.circle_owner.getResponseData()
+        response_data["id"]= self.id
         return response_data
         
 class meManager(models.Model):
@@ -73,12 +74,20 @@ class meEvents(models.Model):
         response_data['event_id'] = self.id
         response_data['venue'] = self.venue
         now = self.date_time
+        # print "Reaching here"
+        # print now[:10]
+        # print now[-5:]
         desired_format = '%Y-%m-%dT%H-%M'
         date_time_str = now.strftime(desired_format)
+        print "here"
         date_time_arr = date_time_str.split('T')
         
         response_data['date'] = date_time_arr[0]
         response_data['time'] = date_time_arr[1]
+        
+        # response_data['date'] = now[:10]
+        # response_data['time'] = now[-5:]
+        
 
         response_data['owner_id'] = self.owner.id
         response_data['event_name'] = self.event_name

@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponse
 from ..models import meEvents,meUser,meCircles,meManager
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime, timedelta
 @csrf_exempt
 def eventRequest(request, event_id=None):
         if (event_id is None):
@@ -23,7 +24,9 @@ def createEvent(request):
         invitedCircles = invitedCircles.split(',')
         event = meEvents()
         event.event_name = eventName
-        event.date_time = eventDateTime
+        dateobj = datetime.strptime(eventDateTime,'%Y-%m-%d %H:%M')
+
+        event.date_time = dateobj
         eventOwner = meUser.objects.get(id=owner_id)
         event.owner = eventOwner
         event.venue = eventVenue
@@ -32,7 +35,7 @@ def createEvent(request):
         
         if createManager(invitedCircles,eid)==False:
                 response_data = event.getResponseData()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
+                # return HttpResponse(json.dumps(response_data), content_type="application/json")
                 return HttpResponse(json.dumps({'success': False}), content_type="application/json")
         
         response_data = event.getResponseData()
@@ -65,14 +68,16 @@ def createManager(invitedCircles,eid):
                                 return False
                         manager.event = event[0]
                         manager.user_id = user['user_id'] # should be a user
-                        manager.accpet = False
+                        print "Creating row for ",user['user_id'],event[0].id
+                        manager.accept = 0
                         manager.circle_id = circle_id
                         manager.save()
+        return True
 
 
 def deleteEvent(request,event_id):
         event = meEvents.objects.get(id=event_id)
-        event.delete()
+        event[0].delete()
         return HttpResponse(json.dumps({'success': True}), content_type="application/json")
 
 def getEvent(request,event_id):

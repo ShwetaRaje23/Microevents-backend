@@ -123,12 +123,13 @@ Deletes an event if event exists
 Accept an event
 ```
 ```
+```
     POST /api/main/
 
 {
-    event_id=1
-    user_id = 2
-    accept = 1 or 2 (1 =accept, 2= reject)
+    event_id=1,
+    user_id = 2,
+    accept = 1 or 2 (1 =accept, 2= reject),
 }
 
 
@@ -150,7 +151,7 @@ Creates a circle.
     Sample request: 
 { 
     circle_name: 'myCircle', 
-    user_ids: user_id1,user_id2 ....., 
+    email_ids: email_id1,email_id2 ....., 
     user_id: user_id (owner_id) 
 } 
 ```
@@ -163,3 +164,4 @@ Deletes a circle item.
 ```
     GET /api/ circle/?user_id=1 
 ```
+g

@@ -28,19 +28,29 @@ def manageRequest(request, event_id=None):
 
 
 def acceptEvent(request):
-    event = request.POST.get('event_id','')
+    event_id = request.POST.get('event_id','')
     user = request.POST.get('user_id','')
     # circle = request.POST.get('circle_id','') #lets see for the circle id part
+    event=meEvents.objects.filter(id=event_id)
+    if(len(event)>0):
+        event=event[0]
+    else:
+        print "non existatnt event"
+        return HttpResponse(json.dumps({'success': False}), content_type="application/json")
     accept = request.POST.get('accept')
-    row=meManager.objects.filter(event_id=event,user_id=user)
+    row=meManager.objects.filter(event=event,user_id=user)
     try:
         row=row[0]
     except:
+        print "couldnt find row in manager"
         return HttpResponse(json.dumps({'success': False}), content_type="application/json")
     if(accept==1):
         row.accept = 1
-    else:
+    elif(accept==2):
         row.accept = 2
+    else:
+        row.delete()
+        return HttpResponse(json.dumps({'success': True}), content_type="application/json")
     row.save()
     
     return HttpResponse(json.dumps({'success': True}), content_type="application/json")
@@ -61,6 +71,7 @@ def getEvents(request):
         print eid
         event_row = meEvents.objects.filter(id=eid)
         event_row = event_row[0]
+        print "jere",event_row
         res = event_row.getResponseData()
         res['status'] = status
         response.append(res)
