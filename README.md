@@ -98,7 +98,7 @@ Creates an event and returns it and automatically creates a manager object that 
     Sample request:
 { 
     event_name: "sample event" 
-    event_date_time:”2012-11-23 11:11:00” 
+    event_date_time:”2012-11-23 11:11” 
     user_id:1 
     venue: “Atlanta” 
     invites: cricleid1,circleid2.. 
@@ -110,7 +110,7 @@ Creates an event and returns it.
     Sample request: 
 { 
     event_name: "sample event" 
-    event_date_time:”2012-11-23 11:11:00” 
+    event_date_time:”2012-11-23 11:11” 
     user_id:1 
     venue: “Atlanta” 
     invites: cricleid1,circleid2.. 
