@@ -123,12 +123,13 @@ Deletes an event if event exists
 Accept an event
 ```
 ```
+```
     POST /api/main/
 
 {
-    event_id=1
-    user_id = 2
-    accept = 1 or 2 (1 =accept, 2= reject)
+    event_id=1,
+    user_id = 2,
+    accept = 1 or 2 (1 =accept, 2= reject),
 }
 
 
