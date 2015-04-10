@@ -35,8 +35,8 @@ def createEvent(request):
         
         if createManager(invitedCircles,eid)==False:
                 response_data = event.getResponseData()
-                return HttpResponse(json.dumps(response_data), content_type="application/json")
-                # return HttpResponse(json.dumps({'success': False}), content_type="application/json")
+                # return HttpResponse(json.dumps(response_data), content_type="application/json")
+                return HttpResponse(json.dumps({'success': False}), content_type="application/json")
         
         response_data = event.getResponseData()
         return HttpResponse(json.dumps(response_data), content_type="application/json")
@@ -68,9 +68,11 @@ def createManager(invitedCircles,eid):
                                 return False
                         manager.event = event[0]
                         manager.user_id = user['user_id'] # should be a user
-                        manager.accpet = False
+                        print "Creating row for ",user['user_id'],event[0].id
+                        manager.accept = 0
                         manager.circle_id = circle_id
                         manager.save()
+        return True
 
 
 def deleteEvent(request,event_id):
