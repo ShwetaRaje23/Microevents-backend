@@ -31,6 +31,7 @@ def createEvent(request):
         eid = event.id
         
         if createManager(invitedCircles,eid)==False:
+                response_data = event.getResponseData()
                 return HttpResponse(json.dumps(response_data), content_type="application/json")
                 return HttpResponse(json.dumps({'success': False}), content_type="application/json")
         
