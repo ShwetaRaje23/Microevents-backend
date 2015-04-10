@@ -34,9 +34,9 @@ class meCircles(models.Model):
         return self.circle_name
     
     def getResponseData(self, request=None):
-        user_id = None
-        if request:
-            user_id = request.session['user_id']
+        # user_id = None
+        # if request:
+            # user_id = request.session['user_id']
 
         users=[] #No idea what this is doing
         for i,user in enumerate(self.group_users.all()):
@@ -49,6 +49,7 @@ class meCircles(models.Model):
         response_data["circle_name"]=self.circle_name
         response_data["users"]=users
         response_data["owner"]=self.circle_owner.getResponseData()
+        response_data["id"]= self.id
         return response_data
         
 class meManager(models.Model):

@@ -55,11 +55,11 @@ def createUser(request):
     
     if len(existing_users) > 0:
         existing_user = existing_users[0]
-        if existing_user.first_name == "Unverified" and existing_user.last_name == "Unverified": #hardcoded new user
-            user = existing_user
-        else:
+        # if existing_user.first_name == "Unverified" and existing_user.last_name == "Unverified": #hardcoded new user
+            # user = existing_user
+        # else:
             # we already have a user with that email.
-            return HttpResponse(json.dumps({'success': False}), content_type="application/json")
+        return HttpResponse(json.dumps({'success': False}), content_type="application/json")
 
     if user is None:
         user = meUser()

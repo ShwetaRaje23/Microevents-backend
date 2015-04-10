@@ -5,9 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def circleRequest(request,circle_id=None):
-    if (circle_id is None):
-        circle_id = request.GET.get('circle_id', '')
-        # return getCircle(request, circle_id)
+    if (circle_id is not None):
+        # circle_id = request.GET.get('circle_id', '')
+        return getCircle(request, circle_id)
     if request.method == "POST":
         return createCircle(request)
     elif request.method == "DELETE":
@@ -49,7 +49,7 @@ def getCircle(request,circle_id):
             circle = meCircle[0]
             print "feaegearewr"
             
-            response_data = meCircle.getResponseData(request)
+            response_data = circle.getResponseData(request)
     else:
         getCirclesForUser(request)
     return HttpResponse(json.dumps(response_data), content_type="application/json")
