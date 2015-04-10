@@ -18,7 +18,7 @@ def createCircle(request):
     circleName = request.POST.get('circle_name', '')
     email_ids = request.POST.get('email_ids', '')
     owner_id =  request.POST.get('user_id', '')
-    user_ids= user_ids.split(',')
+    email_ids= email_ids.split(',')
     circle =  meCircles()
     circle.circle_name = circleName
     circle.circle_owner=meUser.objects.filter(id=owner_id)[0]
@@ -26,7 +26,7 @@ def createCircle(request):
     users=[]
     for email_id in email_ids:    
         print email_id
-        current_user = meUser.objects.filter(email=user_id)
+        current_user = meUser.objects.filter(email=email_id)
         # print current_user
         if current_user is None or len(current_user)==0:
             return HttpResponse(json.dumps({'success': False}), content_type="application/json")

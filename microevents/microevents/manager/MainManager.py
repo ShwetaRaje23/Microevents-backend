@@ -38,7 +38,7 @@ def acceptEvent(request):
 
 
 def getEvents(request):
-    # print "fesse"
+    print "fesse"
     user = request.GET.get('user_id','')
     print user
     all_events_for_user = meManager.objects.filter(user_id=user)

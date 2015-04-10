@@ -69,8 +69,9 @@ Edit the properties of a user. user_id is optional. Only first_name, last_name, 
 ```
 Get all events for user
 ```
-   POST /api/main/
- 
+   GET /api/main/?user_id=2
+
+
 {
     user_id="2"
 }
