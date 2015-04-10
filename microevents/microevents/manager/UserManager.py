@@ -28,6 +28,7 @@ def editUserRequest(request, user_id=None):
             user_id = curr_user.id
 
     if user_id:
+        print "user",user_id
         user = meUser.objects.get(id=user_id)
 
         first_name = request.POST.get('first_name', '')

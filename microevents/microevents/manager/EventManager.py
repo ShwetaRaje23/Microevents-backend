@@ -94,11 +94,12 @@ def getEvent(request,event_id):
                 
         return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+@csrf_exempt
 def getEventOfOwner(request,user_id):
     response_data=[]
 
-    user_id = request.GET.get('user_id','')
-
+    # user_id = request.GET.get('user_id','')
+    
     if user_id:
         meEventOwner = meEvents.objects.filter(owner=user_id)
 
