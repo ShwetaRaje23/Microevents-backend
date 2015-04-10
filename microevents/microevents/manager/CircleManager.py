@@ -60,7 +60,7 @@ def getCirclesForUser(request):
     user = user[0]
     if(user_id):
         circles_for_user= meCircles.objects.filter(circle_owner=user)
-    for circle,i in enumerate(circles_for_user):
+    for i,circle in enumerate(circles_for_user):
         response_data[i] = circle.getResponseData()
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
