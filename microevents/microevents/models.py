@@ -72,7 +72,7 @@ class meEvents(models.Model):
         response_data = {}
         response_data['event_id'] = self.id
         response_data['venue'] = self.venue
-        now = self.date_time
+        now = self.date_time.strftime("%Y")
         desired_format = '%Y-%m-%dT%H-%M'
         date_time_str = now.strftime(desired_format)
         date_time_arr = date_time_str.split('T')

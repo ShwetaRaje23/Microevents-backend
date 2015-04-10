@@ -150,7 +150,7 @@ Creates a circle.
     Sample request: 
 { 
     circle_name: 'myCircle', 
-    user_ids: user_id1,user_id2 ....., 
+    email_ids: email_id1,email_id2 ....., 
     user_id: user_id (owner_id) 
 } 
 ```
