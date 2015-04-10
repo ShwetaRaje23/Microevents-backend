@@ -74,7 +74,12 @@ class meEvents(models.Model):
         response_data['venue'] = self.venue
         now = self.date_time.now()
         desired_format = '%Y-%m-%dT%H-%M'
-        response_data['date_time'] = now.strftime(desired_format)
+        date_time_str = now.strftime(desired_format)
+        date_time_arr = date_time_str.split('T')
+        
+        response_data['date'] = date_time_arr[0]
+        response_data['time'] = date_time_arr[1]
+
         response_data['owner_id'] = self.owner.id
         response_data['event_name'] = self.event_name
         response_data['owner_name'] = self.owner.first_name +" "+self.owner.last_name
