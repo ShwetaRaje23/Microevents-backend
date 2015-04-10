@@ -77,7 +77,7 @@ class meEvents(models.Model):
         # print "Reaching here"
         # print now[:10]
         # print now[-5:]
-        desired_format = '%Y-%m-%dT%H-%M'
+        desired_format = '%Y-%m-%dT%H:%M'
         date_time_str = now.strftime(desired_format)
         print "here"
         date_time_arr = date_time_str.split('T')
