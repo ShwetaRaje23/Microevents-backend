@@ -61,6 +61,7 @@ def getEvents(request):
         print eid
         event_row = meEvents.objects.filter(id=eid)
         event_row = event_row[0]
+        print "jere",event_row
         res = event_row.getResponseData()
         res['status'] = status
         response.append(res)

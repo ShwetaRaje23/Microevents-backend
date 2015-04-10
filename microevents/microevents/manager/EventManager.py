@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponse
 from ..models import meEvents,meUser,meCircles,meManager
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime, timedelta
 @csrf_exempt
 def eventRequest(request, event_id=None):
         if (event_id is None):
@@ -23,7 +24,9 @@ def createEvent(request):
         invitedCircles = invitedCircles.split(',')
         event = meEvents()
         event.event_name = eventName
-        event.date_time = eventDateTime
+        dateobj = datetime.strptime(eventDateTime,'%Y-%m-%d %H:%M')
+
+        event.date_time = dateobj
         eventOwner = meUser.objects.get(id=owner_id)
         event.owner = eventOwner
         event.venue = eventVenue
@@ -33,7 +36,7 @@ def createEvent(request):
         if createManager(invitedCircles,eid)==False:
                 response_data = event.getResponseData()
                 return HttpResponse(json.dumps(response_data), content_type="application/json")
-                return HttpResponse(json.dumps({'success': False}), content_type="application/json")
+                # return HttpResponse(json.dumps({'success': False}), content_type="application/json")
         
         response_data = event.getResponseData()
         return HttpResponse(json.dumps(response_data), content_type="application/json")
