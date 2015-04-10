@@ -86,7 +86,7 @@ Returns the event with <event_id>.
 { 
     event_id: 1, 
     venue: "Atlanta", 
-    date_time:”2012-11-23 11:11:00” 
+    date_time:”2012-11-23 11:11” 
     owner_id:1 
     event_name:”event1” 
 } 
