@@ -97,7 +97,7 @@ def getEvent(request,event_id):
 @csrf_exempt
 def getEventOfOwner(request,user_id):
     response_data=[]
-
+    
     # user_id = request.GET.get('user_id','')
     
     if user_id:

@@ -13,11 +13,11 @@ urlpatterns = patterns('',
 
                        url(r'^api/user/$', UserManager.userRequest),
                        url(r'^api/user/(?P<user_id>\d*)/$', UserManager.userRequest),
-                       url(r'^api/user/((?P<user_id>\d+)/)?edit/$', UserManager.editUserRequest),
+                       url(r'^api/user/((?P<user_id>\d*)/)?edit/$', UserManager.editUserRequest),
 
                        url(r'^api/event/$', EventManager.eventRequest),
                        url(r'^api/event/(?P<event_id>\d*)/$', EventManager.eventRequest),
-                       url(r'^api/user/((?P<user_id>\d+)/)?events/$', EventManager.getEventOfOwner),
+                       url(r'^api/user/((?P<user_id>\d*)/)?events/$', EventManager.getEventOfOwner),
 
                        url(r'^api/main/$', MainManager.manageRequest),
 
