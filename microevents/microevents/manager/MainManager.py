@@ -46,8 +46,11 @@ def acceptEvent(request):
         return HttpResponse(json.dumps({'success': False}), content_type="application/json")
     if(accept==1):
         row.accept = 1
-    else:
+    elif(accept==2):
         row.accept = 2
+    else:
+        row.delete()
+        return HttpResponse(json.dumps({'success': True}), content_type="application/json")
     row.save()
     
     return HttpResponse(json.dumps({'success': True}), content_type="application/json")

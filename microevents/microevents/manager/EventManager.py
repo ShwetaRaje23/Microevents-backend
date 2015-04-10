@@ -77,7 +77,7 @@ def createManager(invitedCircles,eid):
 
 def deleteEvent(request,event_id):
         event = meEvents.objects.get(id=event_id)
-        event.delete()
+        event[0].delete()
         return HttpResponse(json.dumps({'success': True}), content_type="application/json")
 
 def getEvent(request,event_id):
