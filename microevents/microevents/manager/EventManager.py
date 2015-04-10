@@ -59,7 +59,7 @@ def createManager(invitedCircles,eid):
                         event = meEvents.objects.filter(id=eid)
                         if(len(event) is 0):
                                 print "event not existant,shouldnt happen"
-                                return false
+                                return False
                         manager.event = event[0]
                         manager.user_id = user['user_id'] # should be a user
                         manager.accpet = False
@@ -88,7 +88,9 @@ def getEvent(request,event_id):
 
 def getEventOfOwner(request,user_id):
     response_data=[]
+
     user_id = request.GET.get('user_id','')
+
     if user_id:
         meEventOwner = meEvents.objects.filter(owner=user_id)
 
