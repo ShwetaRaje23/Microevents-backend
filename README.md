@@ -120,6 +120,18 @@ Deletes an event if event exists
 ```
     DELETE /api/ event/<event_id>/ 
 ```
+Accept an event
+```
+```
+    POST /api/main/
+
+{
+    event_id=1
+    user_id = 2
+    accept = 1 or 2 (1 =accept, 2= reject)
+}
+
+
 Circles
 ======
 Returns the circle with the circle id. 

@@ -8,9 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 def manageRequest(request, event_id=None):
     # 2 cases, either accept or reject a event
     # also returns all events for you
-    if request.method == "POST":
+    if request.method == "GET":
         if event_id is None:
             return getEvents(request)
+    if request.method == "POST":
+        return acceptEvent(request)
         # else:
             # return editEvent(request,event_id)
     # elif request.method == "DELETE":
@@ -28,10 +30,17 @@ def manageRequest(request, event_id=None):
 def acceptEvent(request):
     event = request.POST.get('event_id','')
     user = request.POST.get('user_id','')
-    circle = request.POST.get('circle_id','')
-    
-    row=meManager.objects.filter(event_id=event,user_id=user,circle_id=circle)
-    row.accept = True
+    # circle = request.POST.get('circle_id','') #lets see for the circle id part
+    accept = request.POST.get('accept')
+    row=meManager.objects.filter(event_id=event,user_id=user)
+    try:
+        row=row[0]
+    except:
+        return HttpResponse(json.dumps({'success': False}), content_type="application/json")
+    if(accept==1):
+        row.accept = 1
+    else:
+        row.accept = 2
     row.save()
     
     return HttpResponse(json.dumps({'success': True}), content_type="application/json")
