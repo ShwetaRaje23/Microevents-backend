@@ -89,4 +89,29 @@ def deleteCircle(request, circle_id):
             response_data["success"] = True
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
-    
+def editCircle(request,circle_id):
+    if circle_id:
+        mecircle = meCircles.objects.filter(id=circle_id)
+
+        if len(mecircle)>0:
+            circle = mecircle[0]
+            circle_name = request.POST.get('circle_name', '')
+            action = request.POST.get('action_name', '')
+            user_id=request.POST.get('user_id','')
+
+            if circle_name:
+                circle.circle_name = circle_name
+
+            if action=="addUser" and user_id:
+                current_members=circle.group_users
+                current_members.append(user_id)
+                circle.group_users = current_members
+
+            if action=="removeUser" and user_id:
+                current_members=circle.group_users
+                current_members.remove(user_id)
+                circle.group_users = current_members
+
+            circle.save()
+            return HttpResponse(json.dumps({'success': True}), content_type="application/json")
+    return HttpResponse(json.dumps({'success': False}), content_type="application/json")

@@ -22,6 +22,7 @@ urlpatterns = patterns('',
                        url(r'^api/main/$', MainManager.manageRequest),
 
                        url(r'^api/circle/$', CircleManager.circleRequest),
+                       url(r'^api/circle/((?P<circle_id>\d+)/)?edit/$', CircleManager.editCircle),
                        url(r'^api/circle/(?P<circle_id>\d*)/$', CircleManager.circleRequest)
 )
 
